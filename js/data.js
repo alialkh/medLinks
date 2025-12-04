@@ -23,6 +23,12 @@ export const defaultSections = [
       { name: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/', color: '#2b6cb0' },
       { name: 'StatPearls', url: 'https://www.statpearls.com/', color: '#38a169' }
     ]
+  },
+  {
+    title: 'Alis Linkssss',
+    items: [
+      { name: 'Cardiovasc Society', url: 'https://ccs.ca/awards', color: '#2f855a' },
+    ]
   }
 ];
 
@@ -33,6 +39,20 @@ export function loadSections() {
     const parsed = JSON.parse(raw);
     // basic validation
     if (!Array.isArray(parsed)) return structuredClone(defaultSections);
+
+    // Merge any new default sections that are missing from storage
+    let modified = false;
+    defaultSections.forEach(defSec => {
+      if (!parsed.find(p => p.title === defSec.title)) {
+        parsed.push(structuredClone(defSec));
+        modified = true;
+      }
+    });
+
+    if (modified) {
+      saveSections(parsed);
+    }
+
     return parsed;
   } catch (e) {
     return structuredClone(defaultSections);
@@ -77,6 +97,27 @@ export function removeItemFromSection(sections, sectionTitle, itemName) {
       saveSections(sections);
       return true;
     }
+  }
+  return false;
+}
+
+export function reorderSectionItems(sections, sectionTitle, oldIndex, newIndex) {
+  const sec = sections.find(s => s.title === sectionTitle);
+  if (sec && sec.items[oldIndex]) {
+    const [item] = sec.items.splice(oldIndex, 1);
+    sec.items.splice(newIndex, 0, item);
+    saveSections(sections);
+    return true;
+  }
+  return false;
+}
+
+export function reorderSections(sections, oldIndex, newIndex) {
+  if (sections[oldIndex]) {
+    const [sec] = sections.splice(oldIndex, 1);
+    sections.splice(newIndex, 0, sec);
+    saveSections(sections);
+    return true;
   }
   return false;
 }

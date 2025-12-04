@@ -296,6 +296,66 @@ body.light-theme .section-container {
     overflow: hidden;
 }
 
+/* Drag and Drop Visuals */
+.app-card.drag-over-target {
+    box-shadow: 0 0 0 2px var(--accent-color), var(--shadow-lg);
+    z-index: 10;
+    /* transform: scale(1.05); Removed to prevent flickering */
+    background-color: var(--hover-bg);
+}
+
+.app-card.drag-over-target::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px dashed var(--accent-color);
+    border-radius: var(--radius-md);
+    pointer-events: none;
+    animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 20;
+    }
+}
+
+/* Section Dragging */
+.section-drag-handle {
+    cursor: grab;
+    padding: 4px 8px;
+    color: var(--text-secondary);
+    opacity: 0.4;
+    transition: all 0.2s;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.section-drag-handle:hover {
+    opacity: 1;
+    color: var(--text-primary);
+    background: var(--hover-bg);
+}
+
+.section-drag-handle i,
+.section-drag-handle svg {
+    pointer-events: none;
+}
+
+.section-container.dragging {
+    opacity: 0.4;
+    transform: scale(0.99);
+    border: 2px dashed var(--text-secondary);
+}
+
+.section-container.drag-over-target {
+    border: 2px dashed var(--accent-color);
+    background: var(--hover-bg);
+    /* transform: scale(1.01); Removed to prevent flickering */
+}
+
 /* Gloss effect overlay */
 .app-icon::after {
     content: '';

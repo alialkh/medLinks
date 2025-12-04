@@ -1,4 +1,4 @@
-import { loadSections, saveSections, addSection, removeSection, addItemToSection, defaultSections } from './data.js';
+import { loadSections, saveSections, addSection, removeSection, addItemToSection, reorderSectionItems, reorderSections, defaultSections } from './data.js';
 import { renderSections } from './ui.js';
 
 const container = document.getElementById('app-container');
@@ -25,6 +25,12 @@ const addSectionBtn = (() => {
 let sections = loadSections();
 let collapsedStates = JSON.parse(localStorage.getItem('collapsedStates') || '{}');
 let visibleStates = JSON.parse(localStorage.getItem('visibleStates') || '{}');
+
+// Initialize default visibility for Resources2
+if (visibleStates['Resources2'] === undefined) {
+  visibleStates['Resources2'] = false;
+  localStorage.setItem('visibleStates', JSON.stringify(visibleStates));
+}
 
 // expose default/protected section titles so UI can hide remove button for them
 window.DEFAULT_SECTIONS = defaultSections.map(s => s.title);
@@ -170,6 +176,25 @@ window.addEventListener('contextmenu', (ev) => {
     if (removed) {
       saveSections(sections);
       sections = loadSections();
+      refresh();
+    }
+  }
+});
+
+window.addEventListener('itemReordered', (e) => {
+  const { section, oldIndex, newIndex } = e.detail;
+  if (reorderSectionItems(sections, section, oldIndex, newIndex)) {
+    refresh();
+  }
+});
+
+window.addEventListener('sectionReordered', (e) => {
+  const { sourceTitle, targetTitle } = e.detail;
+  const oldIndex = sections.findIndex(s => s.title === sourceTitle);
+  const newIndex = sections.findIndex(s => s.title === targetTitle);
+  
+  if (oldIndex >= 0 && newIndex >= 0) {
+    if (reorderSections(sections, oldIndex, newIndex)) {
       refresh();
     }
   }

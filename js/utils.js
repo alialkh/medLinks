@@ -10,8 +10,11 @@ export function getDomain(url) {
 
 export function getFaviconUrl(url, size = 64) {
   const domain = getDomain(url);
-  // Google favicon service (fast, wide support)
-  return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
+  // DuckDuckGo’s favicon service returns official icons and supports CORS.
+  if (domain) {
+    return 'https://icons.duckduckgo.com/ip3/' + domain + '.ico';
+  }
+  return '';
 }
 
 // darken or lighten hex color by amount (-100..100)
