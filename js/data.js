@@ -29,7 +29,7 @@ export const defaultSections = [
   { title: 'General Links',
     items: [
       {name: "Lab Services Directory", url: "https://www.albertahealthservices.ca/webapps/labservices/indexAPL.asp", color: "#d69e2e"},
-      {name: "Toxicology (PADIS)", url: "www.padis.com", color: "#ed8936"},
+      {name: "Toxicology (PADIS)", url: "https://www.padis.com", color: "#ed8936"},
     ]
 
   },
