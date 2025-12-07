@@ -21,7 +21,7 @@ export const defaultSections = [
       { name: 'UpToDate', url: 'https://www.uptodate.com/contents/search', color: '#2f855a' },
       { name: 'OpenEvidence', url: 'https://www.openevidence.com/', color: '#3182ce' },
       { name: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/', color: '#2b6cb0' },
-      { name: 'StatPearls', url: 'https://www.statpearls.com/', color: '#38a169' }
+      { name: 'StatPearls', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430685/', color: '#38a169' }
     ]
   },
   {
