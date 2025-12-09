@@ -36,6 +36,7 @@ export const defaultSections = [
   {
     title: 'Alis Linkssss',
     items: [
+      { name: "Grand Challenges", url: "https://grand-challenge.org/challenges/?page=1", color: "#805ad5" },
       { name: 'Cardiovasc Society', url: 'https://ccs.ca/awards', color: '#2f855a' },
     ]
   }
