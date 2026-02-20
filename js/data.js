@@ -24,12 +24,15 @@ export const defaultSections = [
       { name: 'StatPearls', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430685/', color: '#38a169' },
       {name: "MDCalc", url: "https://www.mdcalc.com/", color: "#319795"},
       {name: "DynaMed", url: "https://www.dynamed.com/", color: "#805ad5"},
+      {name: "Specialist Link", url: "https://www.specialistlink.ca/", color: "#dd6b20"},
+      {name: "Cancer Resource", url: "https://www.bccancer.bc.ca/", color: "#d69e2e"}
     ]
   },
   { title: 'General Links',
     items: [
       {name: "Lab Services Directory", url: "https://www.albertahealthservices.ca/webapps/labservices/indexAPL.asp", color: "#d69e2e"},
       {name: "Toxicology (PADIS)", url: "https://www.albertahealthservices.ca/topics/page11975.aspx", color: "#ed8936"},
+      {name: "Drug Database List", url: "https://www.ab.bluecross.ca/dbl/idbl_main1.php"}
     ]
 
   },
