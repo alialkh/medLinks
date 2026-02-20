@@ -25,6 +25,7 @@ export const defaultSections = [
       {name: "MDCalc", url: "https://www.mdcalc.com/", color: "#319795"},
       {name: "DynaMed", url: "https://www.dynamed.com/", color: "#805ad5"},
       {name: "Specialist Link", url: "https://www.specialistlink.ca/", color: "#dd6b20"},
+      {name: "Cancer Resource", url: "https://www.bccancer.bc.ca/", color: "#d69e2e"}
     ]
   },
   { title: 'General Links',
